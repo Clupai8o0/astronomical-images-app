@@ -52,7 +52,10 @@ const Navbar = () => {
 				<Icon
 					icon={Icons.Logo}
 					className="w-[110px] lg:w-32 h-auto hover:opacity-80 cursor-pointer transition-opacity duration-200 ease-in-out"
-					onClick={() => handleAnimate()}
+					onClick={() => {
+						if (router.pathname !== '/home')
+							handleAnimate();
+					}}
 
 					// TODO: refactor the code
 				/>

@@ -54,7 +54,11 @@ const NavBtn = ({ route, title, className, clr, shouldAnimate }: Props) => {
 			<a
 				className={`btn ${className} ${clr}`}
 				onClick={() =>
-					shouldAnimate ? handleAnimate() : router.push("/" + route)
+					!shouldAnimate
+						? router.push("/" + route)
+						: router.pathname !== "/" + route
+						? handleAnimate()
+						: null
 				}
 				title={capitalize(title)}
 			>

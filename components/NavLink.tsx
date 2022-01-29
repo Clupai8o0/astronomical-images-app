@@ -52,7 +52,11 @@ const NavLink = ({ route, title, className, target, shouldAnimate }: Props) => {
 				className="nav-link"
 				title={capitalize(title)}
 				onClick={() =>
-					shouldAnimate ? handleAnimate() : router.push("/" + route)
+					!shouldAnimate
+						? router.push("/" + route)
+						: router.pathname !== "/" + route
+						? handleAnimate()
+						: null
 				}
 				target={target}
 			>
