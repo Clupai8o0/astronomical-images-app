@@ -1,5 +1,5 @@
 // react
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -37,6 +37,9 @@ function SignIn() {
 	const [loading, setLoading] = useRecoilState(loadingState);
 	const [stopLoading, setStopLoading] = useRecoilState(stopLoadingState);
 	const [routeChange, setRouteChange] = useRecoilState(routeChangeState);
+
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
 	//* handling loading animation
 	const handleLoad = () => {
@@ -148,6 +151,8 @@ function SignIn() {
 								msgError=""
 								msgCorrect="Correct details"
 								autocomplete="email"
+								value={email}
+								onChange={setEmail}
 							/>
 							<Input
 								label="Enter your password..."
@@ -157,6 +162,8 @@ function SignIn() {
 								isCorrect={null}
 								msgError="Something wrong"
 								msgCorrect=""
+								value={password}
+								onChange={setPassword}
 							/>
 
 							<div className="flex items-center mb-3 mt-5">
