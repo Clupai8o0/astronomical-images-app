@@ -22,12 +22,13 @@ function PinPage() {
 		// if pin state is empty then find add the pin
 		// FIXME: if user does it for some object I don't have
 		// I'm fuked
+		let arr = [""];
+		if (router.query.all)
+			if (typeof router.query.all !== "string") arr = router.query.all;
+
 		if (!currentPin) {
 			pins.filter((pin) => {
-				return (
-					pin.url.slice(33, pin.url.length - 4) ===
-					router?.query?.all?.join("/")
-				);
+				return pin.url.slice(33, pin.url.length - 4) === arr.join("/");
 			});
 		}
 	}, []);
